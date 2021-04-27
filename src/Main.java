@@ -5,6 +5,9 @@
  */
 public class Main {
     public static void main(String[] args) {
-        // Här startas ditt program
+        Object object = new Object(60);
+
+        System.out.println(object.potentialEnergy(5) + "N");
+
     }
 }
