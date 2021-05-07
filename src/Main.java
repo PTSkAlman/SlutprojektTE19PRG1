@@ -8,5 +8,6 @@ public class Main {
         Object object = new Object(60, 0.5f);
         System.out.println(object.potentialEnergy(5) + "N");
         System.out.println(object.density() + "kg/m^3");
+        System.out.println();
     }
 }

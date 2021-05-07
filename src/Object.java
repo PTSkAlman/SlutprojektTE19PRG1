@@ -13,6 +13,10 @@ public class Object {
         return (4*Math.PI*radius*radius*radius)/3;
     }
 
+    private double frontalArea() {
+        return (Math.PI*radius*radius);
+    }
+
     public int density() {
         double rho = mass/volume();
         return (int) Math.round(rho);
