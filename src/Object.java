@@ -17,6 +17,11 @@ public class Object {
         return (Math.PI*radius*radius);
     }
 
+    public double forceDown() {
+        double F;
+        return F = (mass*GRAVITY);
+    }
+
     public int density() {
         double rho = mass/volume();
         return (int) Math.round(rho);
