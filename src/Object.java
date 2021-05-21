@@ -1,8 +1,25 @@
 public class Object {
 
     private static final float GRAVITY = 9.82f;
-    public int mass;
-    public float radius;
+    private int mass;
+
+    public int getMass() {
+        return mass;
+    }
+
+    public float getRadius() {
+        return radius;
+    }
+
+    public void setMass(int mass) {
+        this.mass = mass;
+    }
+
+    public void setRadius(float radius) {
+        this.radius = radius;
+    }
+
+    private float radius;
 
     public Object(int mass, float radius) {
         this.mass = mass;
@@ -35,4 +52,5 @@ public class Object {
     public int terminalVelocity() {
         return 0;
     }
+
 }
