@@ -103,13 +103,20 @@ public class GUI implements ActionListener {
         calculate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!textMass.getText().equals("") && !textRadius.getText().equals("")) {
+                if (!textMass.getText().equals("")) {
                     object.setMass(Integer.parseInt(textMass.getText()));
+                }
+                if (!textRadius.getText().equals("")) {
                     object.setRadius(Float.parseFloat(textRadius.getText()));
+                }
+                if (object.getMass() > 0 && object.getRadius() > 0) {
                     density.setText(object.density() + "kg/m^3");
                     volume.setText((float) object.volume() + "m^3");
+                } else if (object.getMass() == 0 || object.getRadius() == 0) {
+                    density.setText("0kg/m^3");
+                    volume.setText("0m^3");
                 }
-                if (!textHeight.getText().equals("")) {
+                if (!textHeight.getText().equals("") && object.getMass() > 0) {
                     object.setHeight(Integer.parseInt(textHeight.getText()));
                     potentialEnergy.setText(object.potentialEnergy(object.getHeight()) + "N");
                 }

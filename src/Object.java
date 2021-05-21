@@ -8,6 +8,14 @@ public class Object {
     public int getHeight() {
         return height;
     }
+    
+    public int getMass() {
+        return mass;
+    }
+
+    public float getRadius() {
+        return radius;
+    }
 
     public void setMass(int mass) {
         this.mass = mass;
