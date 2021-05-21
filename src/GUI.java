@@ -8,8 +8,9 @@ public class GUI implements ActionListener {
     private JFrame frame = new JFrame();
     private JPanel panel = new JPanel(new GridBagLayout());
     GridBagConstraints gbc = new GridBagConstraints();
-    private JTextField textMass, textRadius;
-    private JLabel labelMass, labelRadius, labelDensity, density;
+    private JTextField textMass, textRadius, textHeight;
+    private JLabel labelMass, labelRadius, labelDensity, labelVolume, labelHeight, labelPotentialEnergy;
+    private JLabel density, volume, potentialEnergy;
     private JButton calculate;
 
     private int mass;
@@ -38,12 +39,18 @@ public class GUI implements ActionListener {
         Object object = new Object(mass, radius);
         labelMass = new JLabel("Mass:");
         labelRadius = new JLabel("Radius:");
-        labelDensity = new JLabel("Density:");
+        labelDensity = new JLabel("Density: ");
+        labelVolume = new JLabel("Volume: ");
+        labelHeight = new JLabel("Height:");
+        labelPotentialEnergy = new JLabel("Potential Energy:");
 
         density = new JLabel();
+        volume = new JLabel();
+        potentialEnergy = new JLabel();
 
         textMass = new JTextField("(kg)",5);
         textRadius = new JTextField("(m)", 5);
+        textHeight = new JTextField("(m)", 5);
 
         calculate = new JButton("Calculate");
 
@@ -64,7 +71,30 @@ public class GUI implements ActionListener {
         panel.add(density, gbc);
 
         gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(labelVolume, gbc);
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        panel.add(volume, gbc);
+
+        gbc.gridx = 0;
         gbc.gridy = 3;
+        panel.add(labelHeight, gbc);
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        panel.add(textHeight, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        panel.add(labelPotentialEnergy, gbc);
+        gbc.gridx = 1;
+        gbc.gridy = 4;
+        panel.add(potentialEnergy, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 4;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         panel.add(calculate, gbc);
 
         frame.pack();
@@ -75,8 +105,13 @@ public class GUI implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 if (!textMass.getText().equals("") && !textRadius.getText().equals("")) {
                     object.setMass(Integer.parseInt(textMass.getText()));
-                    object.setRadius(Integer.parseInt(textRadius.getText()));
-                    density.setText(String.valueOf(object.density()) + "kg/m^3");
+                    object.setRadius(Float.parseFloat(textRadius.getText()));
+                    density.setText(object.density() + "kg/m^3");
+                    volume.setText((float) object.volume() + "m^3");
+                }
+                if (!textHeight.getText().equals("")) {
+                    object.setHeight(Integer.parseInt(textHeight.getText()));
+                    potentialEnergy.setText(object.potentialEnergy(object.getHeight()) + "N");
                 }
             }
         });

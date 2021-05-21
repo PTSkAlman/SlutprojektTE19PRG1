@@ -2,13 +2,11 @@ public class Object {
 
     private static final float GRAVITY = 9.82f;
     private int mass;
+    private float radius;
+    private int height;
 
-    public int getMass() {
-        return mass;
-    }
-
-    public float getRadius() {
-        return radius;
+    public int getHeight() {
+        return height;
     }
 
     public void setMass(int mass) {
@@ -19,14 +17,18 @@ public class Object {
         this.radius = radius;
     }
 
-    private float radius;
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+
 
     public Object(int mass, float radius) {
         this.mass = mass;
         this.radius = radius;
     }
 
-    private double volume() {
+    public double volume() {
         return (4*Math.PI*radius*radius*radius)/3;
     }
 
