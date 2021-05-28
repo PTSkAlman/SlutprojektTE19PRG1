@@ -40,15 +40,6 @@ public class Object {
         return (4*Math.PI*radius*radius*radius)/3;
     }
 
-    private double frontalArea() {
-        return (Math.PI*radius*radius);
-    }
-
-    public double forceDown() {
-        double F;
-        return F = (mass*GRAVITY);
-    }
-
     public int density() {
         double rho = mass/volume();
         return (int) Math.round(rho);
@@ -57,10 +48,6 @@ public class Object {
     public int potentialEnergy(int height) {
         int F;
         return F = (int) (mass * height * GRAVITY);
-    }
-
-    public int terminalVelocity() {
-        return 0;
     }
 
 }
