@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 public class GUI implements ActionListener {
 
@@ -53,6 +55,8 @@ public class GUI implements ActionListener {
         textHeight = new JTextField("(m)", 5);
 
         calculate = new JButton("Calculate");
+
+        final String[] previous = new String[1];
 
         // Visual
         frame.add(panel);
@@ -119,6 +123,48 @@ public class GUI implements ActionListener {
                 if (!textHeight.getText().equals("") && object.getMass() > 0) {
                     object.setHeight(Integer.parseInt(textHeight.getText()));
                     potentialEnergy.setText(object.potentialEnergy(object.getHeight()) + "N");
+                }
+            }
+        });
+        textMass.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                previous[0] = textMass.getText();
+                textMass.setText("");
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (textMass.getText().equals("")) {
+                    textMass.setText(previous[0]);
+                }
+            }
+        });
+        textRadius.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                previous[0] = textRadius.getText();
+                textRadius.setText("");
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (textRadius.getText().equals("")) {
+                    textRadius.setText(previous[0]);
+                }
+            }
+        });
+        textHeight.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                previous[0] = textHeight.getText();
+                textHeight.setText("");
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (textHeight.getText().equals("")) {
+                    textHeight.setText(previous[0]);
                 }
             }
         });
